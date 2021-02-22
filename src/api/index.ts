@@ -1,18 +1,13 @@
-import { Console } from "console";
-
 const request = require('request')
 // let util = require('util');
 const iconv = require("iconv-lite");
 var BufferHelper = require('bufferhelper');
-const http = require('http')
 const zlib = require('zlib')
-const querystring = require('querystring');
 
 function httpRequest({ method, url, data, req, res }) {
-  let host = process.env.API_HOST
   let headers = req.headers
   delete headers.origin
-  var requestUrl = host + url;
+  let requestUrl = process.env.API_HOST + url
   if (method === 'GET' && data && JSON.stringify(data) !== "{}") {
     requestUrl = `${requestUrl}?`
     for (var i in data) {

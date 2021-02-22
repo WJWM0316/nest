@@ -11,7 +11,9 @@ export class FormulaService {
     getNodeData(req.body, req, res).then(result => {
       result.data = excelTemplate.extendData(result.data, true)
       let sheet = result.data[0]
+      console.time('加载公式')
       sheet = formula.execFunctionGroup(sheet)
+      console.timeEnd('加载公式')
       let params = {
         sheetData: [],
         flag: "edit",
