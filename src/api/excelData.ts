@@ -43,3 +43,14 @@ export const getNodeData = (data, req, res) => {
     res
   })
 }
+
+// 获取节点数据
+export const saveData = (data, req, res) => {
+  return httpRequest({
+    method: 'POST',
+    url: '/epm-configuration/sheetTemplate/saveData',
+    data,
+    req,
+    res
+  })
+}
